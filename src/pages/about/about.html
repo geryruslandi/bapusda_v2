@@ -1,0 +1,50 @@
+
+<ion-content no-padding class="animate-in-primary">
+<div class="box_wrapper">
+  <div class="box">
+    <div class="front"></div>
+    <div class="back"></div>
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+</div>
+<ion-grid no-padding>
+	<ion-row>
+		<ion-col>
+			<button ion-item no-lines text-center>
+			<h1 padding-top>
+			<ion-icon padding-right name="ios-book"></ion-icon>
+			Explore The Library!
+			</h1>
+			</button>
+		</ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col offset-1 col-4>
+	<ion-list>
+    <button ion-item (click)="listPage('umum')">Kategori Umum </button>
+    <button ion-item (click)="listPage('agamafilsafat')">Kategori Agama & Filsafat</button>
+	<button ion-item (click)="listPage('sosialbahasa')">Kategori Ilmu sosial & Bahasa</button>
+	</ion-list>
+		</ion-col>
+		<ion-col offset-2 col-4>
+	<ion-list>
+    <button ion-item text-end (click)="listPage('sainstekno')">Kategori Sains & Teknologi</button>
+    <button ion-item text-end (click)="listPage('seniolahragasastra')">Kategori Seni, Olahraga & Kesusastraan</button>
+	<button ion-item text-end (click)="listPage('sejarahgeo')">Kategori Sejarah & Geografi</button>
+	</ion-list>
+		</ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col text-center>
+			<button margin-top ion-button (click)="scan()" class="search">
+			  <ion-icon padding-right name="search"></ion-icon>
+			  Cari Buku Dengan Barcode
+			</button>
+		</ion-col>
+	</ion-row>
+</ion-grid>
+
+</ion-content>

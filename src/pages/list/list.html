@@ -1,0 +1,66 @@
+
+<ion-split-pane>
+	<ion-header>
+	<ion-navbar>
+		<ion-toolbar>
+			<ion-searchbar end></ion-searchbar>
+		</ion-toolbar>
+		</ion-navbar>
+	</ion-header>
+<!-- List Item -->
+	<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <ion-avatar item-start>
+     <img src="http://localhost:8123/inlislite3/uploaded_files/sampul_koleksi/original/nophoto.jpg">
+    </ion-avatar>
+     <h2>
+       {{item.Title}}
+      </h2>
+	  <p>Oleh : {{item.Author}}</p>
+    </button>
+  </ion-list>
+	</ion-content>
+<!-- Detail Item -->
+	<ion-content>
+	<ion-grid>
+	<ion-row>
+	<ion-col>
+<ion-card>
+  <img src="http://localhost:8123/inlislite3/uploaded_files/sampul_koleksi/original/nophoto.jpg"/>
+  <ion-card-content>
+    <ion-card-title>
+      Judul Utama / Pengarang
+      </ion-card-title>
+    <p>
+      Deskripsi lorem ipsum
+    </p>
+  </ion-card-content>
+</ion-card>
+</ion-col>
+<ion-col>
+<ion-card>
+	<ion-list>
+		<ion-list-header>
+		Detail Buku
+		</ion-list-header>
+		<ion-item>Judul Lengkap : </ion-item>
+		<ion-item>Edisi :  </ion-item>
+		<ion-item>Author :  </ion-item>
+		<ion-item>ISBN :  </ion-item>
+		<ion-item>Call Number :  </ion-item>
+		<ion-item>Publisher : </ion-item>
+		<ion-item>Publish Year : </ion-item>
+		<ion-item>Category :  </ion-item>
+		<ion-item>Physical Description : </ion-item>
+	</ion-list>
+</ion-card>
+			<button margin-top ion-button block>
+			  <ion-icon padding-right name="book"></ion-icon>
+			  Tunjukkan saya lokasi buku
+			</button>
+</ion-col>
+</ion-row>
+</ion-grid>
+	</ion-content>
+</ion-split-pane>

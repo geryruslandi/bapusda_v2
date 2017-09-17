@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button (click)="startApp()" ion-button color="primary">SKIP</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+<div class="bgbg2"></div>
+	<ion-slides pager>
+	<ion-slide pager="true" >
+	<div class="bgbg"></div>
+			<button margin-top ion-button (click)="slideNext()"  style="margin-top: 30vw;" >
+			  <ion-icon padding-right name="book"></ion-icon>
+			  Selamat Datang Di BAPUSDA Kota Tanjungpinang
+			</button>
+	</ion-slide>
+
+	<ion-slide>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col col-4 offset-4>
+<ion-card style="width: 30vw;">
+  <img src="../assets/img/lib.jpg"/>
+  <ion-card-content>
+    <ion-card-title>
+      Jelajahi Perpustakaan!
+      </ion-card-title>
+    <p>
+      Cari dan jelajahi lebih dari 10 Ribu koleksi buku tanpa harus berkeliling. 
+    </p>
+	<button ion-button (click)="slideNext()">Selanjutnya<ion-icon padding-left name="ios-arrow-forward"></ion-icon></button>
+  </ion-card-content>
+</ion-card>
+</ion-col>
+</ion-row>
+</ion-grid>
+	</ion-slide>
+
+	<ion-slide>
+	<ion-grid>
+		<ion-row>
+			<ion-col col-4 offset-4>
+<ion-card style="width: 30vw;">
+  <img src="../assets/img/scan.png"/>
+  <ion-card-content>
+    <ion-card-title>
+      Pinjam Buku dengan lebih cepat
+      </ion-card-title>
+    <p>
+      Kini anda dapat meminjam buku dengan lebih cepat menggunakan fitur pindai barcode pada bagian belakang buku, peminjaman anda akan langsung tercatat secara otomatis.
+    </p>
+	<button ion-button (click)="startApp()">Mulai<ion-icon padding-left name="ios-arrow-forward"></ion-icon></button>
+  </ion-card-content>
+</ion-card>
+</ion-col>
+</ion-row>
+</ion-grid>
+	</ion-slide>
+
+	</ion-slides>
+</ion-content>
+

@@ -1,0 +1,47 @@
+
+<ion-content class="animate-in-primary">
+	<ion-grid><ion-row></ion-row>
+		<ion-row>
+			<ion-col col-4 offset-4>
+			<ion-card>
+			<ion-card-header>
+				<h1 text-center>Buku Tamu</h1>
+			</ion-card-header>
+				<ion-list>
+				  <ion-item>
+					<ion-label placeholder>Nama</ion-label>
+					<ion-input type="text" text-right></ion-input>
+				  </ion-item>
+					<ion-item>
+					<ion-label>Status Keanggotaan</ion-label>
+					<!-- [selectOptions]="selectOptions" [(ngModel)]="gaming"  --> 
+					<ion-select interface="popover">
+					  <ion-option value="false">Belum Anggota</ion-option>
+					  <ion-option value="true">Anggota</ion-option>
+					</ion-select>
+					</ion-item>
+				<ion-item>
+					<ion-label>Lokasi Ruang</ion-label>
+					<ion-select interface="popover">
+					  <ion-option value="nes">NES</ion-option>
+					  <ion-option value="n64">Nintendo64</ion-option>
+					  <ion-option value="ps">PlayStation</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label>Tujuan Kunjungan</ion-label>
+					<ion-select interface="popover">
+					  <ion-option value="nes">NES</ion-option>
+					  <ion-option value="n64">Nintendo64</ion-option>
+					  <ion-option value="ps">PlayStation</ion-option>
+					</ion-select>
+				</ion-item>
+				 <ion-item-divider color="light"><ion-badge item-end color="danger">*Isi Form Lebih Cepat Dengan Barcode Kartu Anggota</ion-badge></ion-item-divider>
+				<button ion-item text-center color="primary">Submit Buku Tamu</button>
+				<button ion-item text-center color="danger">Login Dengan Barcode</button>
+				</ion-list>
+			</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
