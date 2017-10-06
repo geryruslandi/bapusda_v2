@@ -43,7 +43,15 @@ export class HomePage {
                 })
                 .map(res => res.json())
                 .subscribe(
-                    data => {this._tokenService.setToken(data.token)},
+                    data => {
+                        this._tokenService.setToken(data.token);
+                        const alert = this.alertCtrl.create({
+                            title: 'Login Berhasil',
+                            subTitle: 'Sekarang Anda Bisa Melakukan Pencarian Buku Menggunakan Barcode',
+                            buttons: ['Dismiss']
+                        });
+                        alert.present();
+                    },
                     err  => {
                         const alert = this.alertCtrl.create({
                             title: 'Login Failed',

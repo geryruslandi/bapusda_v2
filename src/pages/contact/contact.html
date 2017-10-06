@@ -22,12 +22,12 @@
 <ion-list *ngSwitchCase="'not_member'">
 				  <ion-item>
 					<ion-label placeholder>Nama</ion-label>
-					<ion-input type="text" text-right></ion-input>
+					<ion-input [(ngModel)]="nama" type="text" text-right></ion-input>
 				  </ion-item>
 					<ion-item>
 					<ion-label>Profesi</ion-label>
 					<!-- [selectOptions]="selectOptions" [(ngModel)]="gaming"  --> 
-					<ion-select interface="popover">
+					<ion-select [(ngModel)]="profesi" interface="popover">
 					  <ion-option value="1">Pelajar</ion-option>
 					  <ion-option value="2">Mahasiswa</ion-option>
 					  <ion-option value="3">TNI/POLRI</ion-option>
@@ -43,7 +43,7 @@
 					</ion-item>
 				<ion-item>
 					<ion-label>Jenjang Pendidikan</ion-label><!-- Hanya Muncul Apabila Status Pelajar/Mahasiswa -->
-					<ion-select interface="popover">
+					<ion-select [(ngModel)]="pendidikan" interface="popover">
 					  <ion-option value="1">SD</ion-option>
 					  <ion-option value="2">SMP</ion-option>
 					  <ion-option value="3">SMA</ion-option>
@@ -57,18 +57,18 @@
 				</ion-item>
 				<ion-item>
 					<ion-label>Jenis Kelamin</ion-label>
-					<ion-select interface="popover">
+					<ion-select [(ngModel)]="kelamin" interface="popover">
 					  <ion-option value="1">Pria</ion-option>
 					  <ion-option value="2">Wanita</ion-option>
 					</ion-select>
 				</ion-item>
 				<ion-item>
 					<ion-label>Alamat</ion-label>
-					<ion-input type="text" text-right></ion-input>
+					<ion-input [(ngModel)]="alamat" type="text" text-right></ion-input>
 				</ion-item>
 				<ion-item>
 					<ion-label>Lokasi Ruang</ion-label>
-					<ion-select interface="popover">
+					<ion-select [(ngModel)]="ruang" interface="popover">
 					  <ion-option value="1">Kunjungan Biasa/Membaca</ion-option>
 					  <ion-option value="2">Penelitian</ion-option>
 					  <ion-option value="3">Study Tour</ion-option>
@@ -79,7 +79,7 @@
 				</ion-item>
 				<ion-item>
 					<ion-label>Tujuan Kunjungan</ion-label>
-					<ion-select interface="popover">
+					<ion-select [(ngModel)]="tujuan" interface="popover">
 					  <ion-option value="1">Kunjungan Biasa/Membaca</ion-option>
 					  <ion-option value="2">Penelitian</ion-option>
 					  <ion-option value="3">Study Tour</ion-option>
@@ -89,8 +89,9 @@
 					</ion-select>
 				</ion-item>
 				<ion-item-divider color="light"><ion-badge item-end color="danger">*Isi Form Lebih Cepat Dengan Barcode Kartu Anggota</ion-badge></ion-item-divider>
-				<button ion-item text-center color="primary">Submit Buku Tamu</button>
+				<button (click)="tamuguest(nama,profesi,pendidikan,kelamin,alamat,ruang,tujuan)" ion-item text-center color="primary">Submit Buku Tamu</button>
 </ion-list>
+
 <ion-list *ngSwitchCase="'ys_member'">
 				  <ion-item>
 				<button ion-item text-center (click)="loginAlert()" color="danger">Scan Barcode Kartu Anggota</button>
@@ -164,7 +165,7 @@
 					</ion-select>
 				</ion-item>
 				 <ion-item-divider color="light"><ion-badge item-end color="danger">*Isi Form Lebih Cepat Dengan Barcode Kartu Anggota</ion-badge></ion-item-divider>
-				<button ion-item text-center color="primary">Submit Buku Tamu</button>
+				<button (click)="tamumember()" ion-item text-center color="primary">Submit Buku Tamu</button>
 </ion-list>
 </div>
 				
