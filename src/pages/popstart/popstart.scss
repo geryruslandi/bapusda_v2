@@ -1,0 +1,49 @@
+page-popstart {
+.toolbar-background { background: transparent; border-color: transparent; }
+ion-content .scroll-content { overflow-y: hidden; }
+.swiper-slide { width: 100vw!important; }
+.header-md::after {background: none!important;}
+	ion-grid {height: 100%;}
+	ion-row {height: 100%}
+	.content-md {
+			background: linear-gradient(269deg, #e0eafc, #cfdef3)!important;
+	}
+	.bgbg{
+		background:url('../assets/img/boy.png') no-repeat center 0;
+		animation: bg-animator 10s infinite ease-in-out; position:absolute; z-index: -1;
+		width: 100vw;
+		height: 100vh;
+		top: 0px;
+	}
+	
+		@keyframes bg-animator {
+			0% {
+				background:url('../assets/img/boy.png') no-repeat center 20px;
+			}
+			50% {
+				background:url('../assets/img/boy.png') no-repeat center 50px;
+			}
+			100% {
+				background:url('../assets/img/boy.png') no-repeat center 20px;
+			}
+		}
+		
+	.bgbg2{
+		background:url('../assets/img/cloud.png') no-repeat top center;
+		animation: bg-animator2 10s infinite ease-in-out; position:absolute; z-index: -2; 
+		width: 100vw;
+		height: 100vh;
+		top: 0px;
+	}
+			@keyframes bg-animator2 {
+			0% {
+				background:url('../assets/img/cloud.png') repeat top left;
+			}
+			50% {
+				background:url('../assets/img/cloud.png') repeat top right;
+			}
+			100% {
+				background:url('../assets/img/cloud.png') repeat top left;
+			}
+		}
+}

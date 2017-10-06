@@ -1,0 +1,38 @@
+
+<ion-content padding style="background-color: white!important;">
+<ion-grid>
+	<ion-row style="margin-top: 12vh;">
+	<ion-col col-5>
+<ion-card>
+  <img src="http://localhost:8123/inlislite3/uploaded_files/sampul_koleksi/original/nophoto.jpg"/>
+  <ion-card-content>
+    <b text-uppercase>
+      {{ item.Title }} / {{ item.Author }}
+    </b>
+  </ion-card-content>
+</ion-card>
+</ion-col>
+<ion-col col-7>
+<ion-card>
+	<ion-list>
+		<ion-list-header>
+		Detail Buku
+		</ion-list-header>
+		<!-- <ion-item>Judul Lengkap : {{ item.Title }}</ion-item> -->
+		<ion-item>Author : {{ item.Author }} </ion-item>
+		<ion-item>Edisi : {{ item.Edition }} </ion-item>
+		<ion-item>ISBN : {{ item.ISBN }} </ion-item>
+		<ion-item>Call Number : {{ item.CallNumber }} </ion-item>
+		<ion-item>Publisher : {{ item.Publisher }}</ion-item>
+		<ion-item>Publish Year : {{ item.PublishYear }}</ion-item>
+		<ion-item>Physical Description : {{ item.PhysicalDescription }}</ion-item>
+	</ion-list>
+</ion-card>
+			<button margin-top ion-button block>
+			  <ion-icon padding-right name="book"></ion-icon>
+			  Tunjukkan saya lokasi buku
+			</button>
+</ion-col>
+</ion-row>
+</ion-grid>
+</ion-content>

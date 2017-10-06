@@ -1,0 +1,25 @@
+ion-app {
+	background:url('../assets/img/bg.jpg') no-repeat center center;
+	background-size: cover;
+}
+.content-md {
+	background: radial-gradient(ellipse at center, rgba(215,221,232,0.3) 20%, rgba(117,127,154,0.3) 100%)!important;
+	background-size: 400% 400%; 
+}
+.tabs-md .tab-button[aria-selected="true"] {
+	background: radial-gradient(ellipse at center, rgba(96,104,125,.8) 0%, rgba(215,221,232,0) 80%);
+	color:#fff!important;
+}
+.tabs-md .tab-button, .tabs-md .tab-button .tab-button-icon, .tabs-md .tab-button[aria-selected="true"] .tab-button-icon {
+	color:#fff!important;
+}
+
+.tabs-md .tabbar{
+	background:none!important;
+}
+.modal-wrapper { 
+	height: 100vh!important;
+	width: 109vh!important;
+	left: 40%!important;
+	top: 0px!important;
+}

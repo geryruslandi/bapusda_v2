@@ -1,0 +1,176 @@
+
+<ion-content class="animate-in-primary">
+	<ion-grid><ion-row></ion-row>
+		<ion-row>
+			<ion-col col-4 offset-4>
+			<ion-card>
+			<ion-card-header>
+				<h1 text-center>Buku Tamu</h1>
+			</ion-card-header>
+				<div padding>
+  <ion-segment [(ngModel)]="member_status">
+    <ion-segment-button value="ys_member">
+      Anggota
+    </ion-segment-button>
+    <ion-segment-button value="not_member">
+      Umum
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="member_status">
+<ion-list *ngSwitchCase="'not_member'">
+				  <ion-item>
+					<ion-label placeholder>Nama</ion-label>
+					<ion-input type="text" text-right></ion-input>
+				  </ion-item>
+					<ion-item>
+					<ion-label>Profesi</ion-label>
+					<!-- [selectOptions]="selectOptions" [(ngModel)]="gaming"  --> 
+					<ion-select interface="popover">
+					  <ion-option value="1">Pelajar</ion-option>
+					  <ion-option value="2">Mahasiswa</ion-option>
+					  <ion-option value="3">TNI/POLRI</ion-option>
+					  <ion-option value="4">Pegawai Swasta</ion-option>
+					  <ion-option value="5">Dosen</ion-option>
+					  <ion-option value="6">Pensiunan</ion-option>
+					  <ion-option value="7">Wiraswasta</ion-option>
+					  <ion-option value="8">Guru</ion-option>
+					  <ion-option value="9">Pegawai Negeri</ion-option>
+					  <ion-option value="10">Peneliti</ion-option>
+					  <ion-option value="11">Lainnya</ion-option>					  
+					</ion-select>
+					</ion-item>
+				<ion-item>
+					<ion-label>Jenjang Pendidikan</ion-label><!-- Hanya Muncul Apabila Status Pelajar/Mahasiswa -->
+					<ion-select interface="popover">
+					  <ion-option value="1">SD</ion-option>
+					  <ion-option value="2">SMP</ion-option>
+					  <ion-option value="3">SMA</ion-option>
+					  <ion-option value="4">D1</ion-option>
+					  <ion-option value="5">D2</ion-option>
+					  <ion-option value="6">D3</ion-option>
+					  <ion-option value="7">S1</ion-option>
+					  <ion-option value="8">S2</ion-option>
+					  <ion-option value="9">S3</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label>Jenis Kelamin</ion-label>
+					<ion-select interface="popover">
+					  <ion-option value="1">Pria</ion-option>
+					  <ion-option value="2">Wanita</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label>Alamat</ion-label>
+					<ion-input type="text" text-right></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label>Lokasi Ruang</ion-label>
+					<ion-select interface="popover">
+					  <ion-option value="1">Kunjungan Biasa/Membaca</ion-option>
+					  <ion-option value="2">Penelitian</ion-option>
+					  <ion-option value="3">Study Tour</ion-option>
+					  <ion-option value="4">Refreshing</ion-option>
+					  <ion-option value="5">Tugas Kuliah</ion-option>
+					  <ion-option value="6">Pencarian Literatur</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label>Tujuan Kunjungan</ion-label>
+					<ion-select interface="popover">
+					  <ion-option value="1">Kunjungan Biasa/Membaca</ion-option>
+					  <ion-option value="2">Penelitian</ion-option>
+					  <ion-option value="3">Study Tour</ion-option>
+					  <ion-option value="4">Refreshing</ion-option>
+					  <ion-option value="5">Tugas Kuliah</ion-option>
+					  <ion-option value="6">Pencarian Literatur</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item-divider color="light"><ion-badge item-end color="danger">*Isi Form Lebih Cepat Dengan Barcode Kartu Anggota</ion-badge></ion-item-divider>
+				<button ion-item text-center color="primary">Submit Buku Tamu</button>
+</ion-list>
+<ion-list *ngSwitchCase="'ys_member'">
+				  <ion-item>
+				<button ion-item text-center (click)="loginAlert()" color="danger">Scan Barcode Kartu Anggota</button>
+				  </ion-item>
+				   <ion-item>
+					<ion-label placeholder>Nama</ion-label>
+					<ion-input type="text" text-right></ion-input>
+				  </ion-item>
+					<ion-item>
+					<ion-label>Profesi</ion-label>
+					<!-- [selectOptions]="selectOptions" [(ngModel)]="gaming"  --> 
+					<ion-select interface="popover">
+					  <ion-option value="1">Pelajar</ion-option>
+					  <ion-option value="2">Mahasiswa</ion-option>
+					  <ion-option value="3">TNI/POLRI</ion-option>
+					  <ion-option value="4">Pegawai Swasta</ion-option>
+					  <ion-option value="5">Dosen</ion-option>
+					  <ion-option value="6">Pensiunan</ion-option>
+					  <ion-option value="7">Wiraswasta</ion-option>
+					  <ion-option value="8">Guru</ion-option>
+					  <ion-option value="9">Pegawai Negeri</ion-option>
+					  <ion-option value="10">Peneliti</ion-option>
+					  <ion-option value="11">Lainnya</ion-option>					  
+					</ion-select>
+					</ion-item>
+				<ion-item>
+					<ion-label>Jenjang Pendidikan</ion-label><!-- Hanya Muncul Apabila Status Pelajar/Mahasiswa -->
+					<ion-select interface="popover">
+					  <ion-option value="1">SD</ion-option>
+					  <ion-option value="2">SMP</ion-option>
+					  <ion-option value="3">SMA</ion-option>
+					  <ion-option value="4">D1</ion-option>
+					  <ion-option value="5">D2</ion-option>
+					  <ion-option value="6">D3</ion-option>
+					  <ion-option value="7">S1</ion-option>
+					  <ion-option value="8">S2</ion-option>
+					  <ion-option value="9">S3</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label>Jenis Kelamin</ion-label>
+					<ion-select interface="popover">
+					  <ion-option value="1">Pria</ion-option>
+					  <ion-option value="2">Wanita</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label>Alamat</ion-label>
+					<ion-input type="text" text-right></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label>Lokasi Ruang</ion-label>
+					<ion-select interface="popover">
+					  <ion-option value="1">Kunjungan Biasa/Membaca</ion-option>
+					  <ion-option value="2">Penelitian</ion-option>
+					  <ion-option value="3">Study Tour</ion-option>
+					  <ion-option value="4">Refreshing</ion-option>
+					  <ion-option value="5">Tugas Kuliah</ion-option>
+					  <ion-option value="6">Pencarian Literatur</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label>Tujuan Kunjungan</ion-label>
+					<ion-select interface="popover">
+					  <ion-option value="1">Kunjungan Biasa/Membaca</ion-option>
+					  <ion-option value="2">Penelitian</ion-option>
+					  <ion-option value="3">Study Tour</ion-option>
+					  <ion-option value="4">Refreshing</ion-option>
+					  <ion-option value="5">Tugas Kuliah</ion-option>
+					  <ion-option value="6">Pencarian Literatur</ion-option>
+					</ion-select>
+				</ion-item>
+				 <ion-item-divider color="light"><ion-badge item-end color="danger">*Isi Form Lebih Cepat Dengan Barcode Kartu Anggota</ion-badge></ion-item-divider>
+				<button ion-item text-center color="primary">Submit Buku Tamu</button>
+</ion-list>
+</div>
+				
+				
+			</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
