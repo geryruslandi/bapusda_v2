@@ -4,6 +4,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { BasicPage as NavigationBasicPage } from '../../pages/navigation/basic/pages';
 import { catParamServices } from '../../services/categoryparam.service';
 import {tokenService} from "../../services/token.service";
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'page-about',
@@ -11,7 +12,7 @@ import {tokenService} from "../../services/token.service";
 })
 export class AboutPage {
 
-  constructor(private barcodeScanner : BarcodeScanner, public navCtrl: NavController, public alertCtrl : AlertController,public catParam : catParamServices,public token:tokenService) {
+  constructor(private barcodeScanner : BarcodeScanner, public navCtrl: NavController, public alertCtrl : AlertController,public catParam : catParamServices,public token:tokenService,public http:Http) {
 
   }
 
@@ -34,6 +35,7 @@ export class AboutPage {
   }
   
   bookAlert() {
+       //Jika Belum Login
     if(this.token.getToken() == "" || this.token.getToken() == null){
         let alert = this.alertCtrl.create({
             title: 'Unathorized',
@@ -42,15 +44,46 @@ export class AboutPage {
         });
         alert.present();
     }
+    //Jika Sudah Login
     else{
+
         let alert = this.alertCtrl.create({
             title: 'Menunggu Scan Buku',
             inputs: [
                 {
-                    name: 'Barcode Number',
+                    name: 'Barcode_Number',
                     placeholder: 'Barcode Number'
                 }],
-            buttons: ['Dismiss']
+            buttons: [
+                {
+                    text: 'Search',
+                    handler: data => {
+                        //Fungsi berjalan ketik string dari barcode di terima
+                        this.http.get("http://localhost/crud-api/api.php/catalogs?filter=ISBN,eq,".concat(data.Barcode_Number).concat("&transform=1"))
+                            .map(res=> res.json())
+                            .subscribe(data=>{
+                                //JIKA TIDAK DI TEMUKAN
+                                if(data.catalogs.length == 0){
+                                    let alert = this.alertCtrl.create({
+                                        title: 'Not Found',
+                                        subTitle:'Buku tidak di temukan',
+                                        buttons: ['Dismiss']
+                                    });
+                                }
+                                //JIKA DI TEMUKAN
+                                else{
+                                    //DATA HASIL PENCARIAN BERADA DI
+                                    //data.catalogs[0]
+
+                                    console.log(data)
+                                }
+                            })
+                    }
+                },
+                {
+                    text: 'Cancel'
+                }
+                ]
         });
         alert.present();
     }

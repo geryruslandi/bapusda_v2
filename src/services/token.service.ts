@@ -11,4 +11,7 @@ export class tokenService{
     getToken(){
         return this.token;
     }
+    deleteToken(){
+        this.token = "";
+    }
 }

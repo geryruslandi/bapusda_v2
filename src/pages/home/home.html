@@ -3,28 +3,42 @@
 
 <ion-grid>
 	<ion-grid><ion-row></ion-row>
-		<ion-row>
-			<ion-col col-4 offset-4>
-			<ion-card>
-			<ion-card-header>
-				<h1 text-center>LOGIN</h1>
-			</ion-card-header>
-				<ion-list>
-				  <ion-item>
-					<ion-label placeholder>Nama</ion-label>
-					<ion-input [(ngModel)]="name" type="text" text-right></ion-input>
-				  </ion-item>
-				  <ion-item>
-					<ion-label placeholder>Password</ion-label>
-					<ion-input [(ngModel)]="pwd" type="password" text-right></ion-input>
-				  </ion-item>
-				 <ion-item-divider color="light"><ion-badge item-end color="danger">*Anda dapat menggunakan fitur barcode buku setelah login</ion-badge></ion-item-divider>
-				<button ion-item text-center color="primary" (click)="login(name,pwd)">Login</button>
-				<button ion-item text-center color="danger" (click)="loginAlert()">Login Dengan Barcode</button>
-				</ion-list>
-			</ion-card>
-			</ion-col>
-		</ion-row>
+        <div [ngSwitch]="loggedin">
+            <ion-row *ngSwitchCase="false">
+                <ion-col col-4 offset-4>
+                    <ion-card>
+                        <ion-card-header>
+                            <h1 text-center>LOGIN</h1>
+                        </ion-card-header>
+                        <ion-list>
+                            <ion-item>
+                                <ion-label placeholder>Nama</ion-label>
+                                <ion-input [(ngModel)]="name" type="text" text-right></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label placeholder>Password</ion-label>
+                                <ion-input [(ngModel)]="pwd" type="password" text-right></ion-input>
+                            </ion-item>
+                            <ion-item-divider color="light"><ion-badge item-end color="danger">*Anda dapat menggunakan fitur barcode buku setelah login</ion-badge></ion-item-divider>
+                            <button ion-item text-center color="primary" (click)="login(name,pwd)">Login</button>
+                            <button ion-item text-center color="danger" (click)="loginAlert()">Login Dengan Barcode</button>
+                        </ion-list>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngSwitchCase="true">
+                <ion-col col-4 offset-4>
+                    <ion-card>
+                        <ion-card-header>
+                            <h1 text-center>Hallo </h1>
+                        </ion-card-header>
+                        <ion-list>
+                            <button ion-item text-center color="danger" (click)="logout()" >Logout</button>
+                        </ion-list>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </div>
 	</ion-grid>
 </ion-grid>
 
