@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
 })
 export class HomePage {
     loggedin :boolean = false;
+    userfullname : string = "";
     constructor(public navCtrl: NavController, public alertCtrl:AlertController, public http: Http,public _tokenService:tokenService,public loading: LoadingController) {
 
     }
@@ -50,6 +51,7 @@ export class HomePage {
                                 });
                                 alert.present();
                                 this.loggedin = true;
+                                this.userfullname = data.name;
                             },
                             err  => {
                                 const alert = this.alertCtrl.create({
@@ -93,6 +95,7 @@ export class HomePage {
                         });
                         alert.present();
                         this.loggedin = true;
+                        this.userfullname = data.name;
                     },
                     err  => {
                         const alert = this.alertCtrl.create({
@@ -111,6 +114,7 @@ export class HomePage {
     logout(){
         this._tokenService.deleteToken();
         this.loggedin = false;
+        this.userfullname = "";
         const alert = this.alertCtrl.create({
             title: 'Logged Out',
             subTitle: 'Anda Telah Logout',
