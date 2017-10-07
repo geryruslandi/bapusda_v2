@@ -13,6 +13,7 @@ export class NavigationDetailsPage {
 
   constructor(params: NavParams) {
     this.item = params.data.item;
+    console.log(this.item)
   }
 }
 

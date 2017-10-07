@@ -5,6 +5,8 @@ import { BasicPage as NavigationBasicPage } from '../../pages/navigation/basic/p
 import { catParamServices } from '../../services/categoryparam.service';
 import {tokenService} from "../../services/token.service";
 import {Http} from "@angular/http";
+import {NavigationDetailsPage} from "../navigation/basic/pages";
+import {ModalController} from "ionic-angular";
 
 @Component({
   selector: 'page-about',
@@ -12,7 +14,7 @@ import {Http} from "@angular/http";
 })
 export class AboutPage {
 
-  constructor(private barcodeScanner : BarcodeScanner, public navCtrl: NavController, public alertCtrl : AlertController,public catParam : catParamServices,public token:tokenService,public http:Http) {
+  constructor(private barcodeScanner : BarcodeScanner, public navCtrl: NavController, public alertCtrl : AlertController,public catParam : catParamServices,public token:tokenService,public http:Http,public modalCtrl: ModalController) {
 
   }
 
@@ -74,8 +76,8 @@ export class AboutPage {
                                 else{
                                     //DATA HASIL PENCARIAN BERADA DI
                                     //data.catalogs[0]
-
-                                    console.log(data)
+                                    let modal = this.modalCtrl.create(NavigationDetailsPage, { item: data.catalogs[0] });
+                                    modal.present();
                                 }
                             })
                     }
