@@ -20,7 +20,7 @@ export class ContactPage {
 
   }
 
-  loginAlert() {
+    loginAlert() {
     let alert = this.alertCtrl.create({
       title: 'Menunggu Scan Kartu',
       inputs: [
@@ -74,6 +74,7 @@ export class ContactPage {
       var date = d.getDate();
       var month = d.getMonth()+1;
       var year = d.getFullYear();
+
       var jsondata = {"NoAnggota":this.member_no,"CreateDate":year+"-"+month+"-"+date,"Nama":_nama,"Profesi_id":_profesi,"PendidikanTerakhir_id":_pendidikan,"JenisKelamin_id":_kelamin,"Alamat":_alamat, "Location_Id":_ruang,"TujuanKunjungan_Id":_tujuan};
       this.http.post("http://localhost/crud-api/api.php/memberguesses",JSON.stringify(jsondata))
           .map(res=>res)
