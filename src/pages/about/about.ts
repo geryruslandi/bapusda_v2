@@ -71,6 +71,7 @@ export class AboutPage {
                                         subTitle:'Buku tidak di temukan',
                                         buttons: ['Dismiss']
                                     });
+                                    alert.present();
                                 }
                                 //JIKA DI TEMUKAN
                                 else{

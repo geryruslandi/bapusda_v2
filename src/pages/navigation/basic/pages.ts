@@ -1,19 +1,26 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController ,AlertController} from 'ionic-angular';
 import { Http } from '@angular/http';
 import { catParamServices } from '../../../services/categoryparam.service';
+import {tokenService} from "../../../services/token.service";
 import 'rxjs/add/operator/map';
 
-
+//enggak tau kenapa , provider root untuk catparamservices dgn tokenservices gk keinstansisasi wktu manggil modal yang makai komponen navigationdetailspage
 @Component({
-  templateUrl: 'navigation-details.html',
+  templateUrl: 'navigation-details.html'
 })
 export class NavigationDetailsPage {
 	item;
+	token;
 
-  constructor(params: NavParams) {
+  constructor(private params: NavParams, public alertCtrl :AlertController) {
     this.item = params.data.item;
+    this.token = params.data.token;
     console.log(this.item)
+  }
+
+  print(){
+      console.log(this.token);
   }
 }
 
@@ -53,7 +60,7 @@ export class BasicPage {
     public items : any = [];
 	item : any;
 
-  constructor(public nav: NavController, public http: Http, public modalCtrl: ModalController,public catParam : catParamServices) {
+  constructor(public nav: NavController, public http: Http, public modalCtrl: ModalController,public catParam : catParamServices,public token : tokenService) {
    this.items = this.load();
   }
   	load(){
@@ -79,7 +86,7 @@ export class BasicPage {
       }
    }
   	_openNavDetailsPage(item) {
-		let modal = this.modalCtrl.create(NavigationDetailsPage, { item: item });
+		let modal = this.modalCtrl.create(NavigationDetailsPage, { item: item, token : this.token.getToken()});
 		modal.present();
 	}
 	_searchTitle(event){

@@ -28,9 +28,9 @@
 		<ion-item>Physical Description : {{ item.PhysicalDescription }}</ion-item>
 	</ion-list>
 </ion-card>
-			<button margin-top ion-button block>
-			  <ion-icon padding-right name="book"></ion-icon>
-			  Tunjukkan saya lokasi buku
+			<button (click)="print()"margin-top ion-button block>
+			  <ion-icon padding-right name="book" ></ion-icon>
+			  Print Nota Peminjaman
 			</button>
 </ion-col>
 </ion-row>
