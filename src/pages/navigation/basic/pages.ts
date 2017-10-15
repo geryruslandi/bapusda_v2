@@ -39,7 +39,7 @@ export class NavigationDetailsPage {
           header.append('token',this.token)
 
           this.http.post("http://localhost/crud-api/api.php?type=pinjam",
-              JSON.stringify({'book_id':this.item.ID,'token':this.token}))
+              JSON.stringify({'title':this.item.Title,'book_id':this.item.ID,'token':this.token}))
               .subscribe((data:any)=>{
                   var blobdata = data._body.toString()
                   popupWin.document.open();

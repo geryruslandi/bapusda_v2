@@ -3236,6 +3236,7 @@ elseif($_GET['type'] == 'pinjam'){
     };
     $userdata = (JWT::decode($_POST['token'],"'u&{<wbUaJ58dcx",array('HS256')))->data;
     //print_r($userdata);
+    $name = $userdata->fullname;
     $collectionloan_id = $userdata->memberno;
     $loan_date = date('Y-m-d  h:i:s');
     $due_date = date('Y-m-d H:i:s', strtotime($loan_date . ' +3 day'));
@@ -3247,19 +3248,15 @@ elseif($_GET['type'] == 'pinjam'){
     //query
     $con=mysqli_connect("127.0.0.1","root","root","inlislite_v3");
 
-    $query = "INSERT INTO 'collectionloanitems' ('ID', 'CollectionLoan_id', 'LoanDate', 'DueDate', 'ActualReturn', 'LateDays', 'LoanStatus', 'Collection_id', 'member_id', 'CreateBy', 'CreateDate', 'CreateTerminal', 'UpdateBy', 'UpdateDate', 'UpdateTerminal', 'KIILastUploadDate') 
-              VALUES (NULL, '$collectionloan_id', '$loan_date', '$due_date', NULL, NULL, '$loan_status', '$collection_id', '$member_id', '33', '$create_date', NULL, NULL, NULL, NULL, NULL)";
+    $query = "INSERT INTO collectionloanitems ( CollectionLoan_id, LoanDate, DueDate,LoanStatus, Collection_id,member_id, CreateBy, CreateDate)
+                VALUES                        ('$collectionloan_id', '$loan_date', '$due_date',  'loan', '$collection_id', '$member_id','33', '$create_date')";
 
     $query = mysqli_query($con,$query);
 
 
     $pdf = new PdfHelper();
-    $nama = $_POST['nama'];
-    $no_anggota = $_POST['no_anggota'];
-    $nama_buku = $_POST['nama_buku'];
-    $tanggal_pinjam =$_POST['tanggal_pinjam'];
     $pdf->AddPage();
-    $pdf->Body();
+    $pdf->Body($name,$collectionloan_id,$_POST['title'],$loan_date,$due_date);
     print_r(base64_encode($pdf->Output('S')));
 }
 else{
