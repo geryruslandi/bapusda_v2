@@ -33,7 +33,7 @@ export class NavigationDetailsPage {
       //Jika Sudah Login
       else{
 
-          var popupWin = window.open("", "MsgWindow", "width=427,height=512");
+
           console.log(this.item)
           let header = new Headers();
           header.append('token',this.token)
@@ -41,43 +41,47 @@ export class NavigationDetailsPage {
           this.http.post("http://localhost/crud-api/api.php?type=pinjam",
               JSON.stringify({'title':this.item.Title,'book_id':this.item.ID,'token':this.token}))
               .subscribe((data:any)=>{
-                  var blobdata = data._body.toString()
+                console.log("status")
+                console.log(data)
+                if(data.status == 200){
+                  console.log(data)
+                  var popupWin = window.open("", "MsgWindow", "width=427,height=512");
                   popupWin.document.open();
                   popupWin.document.write(`
                                                   <html>
                                                     <body>
-                                                        <script src="//localhost/crud-api/pdf.js"></script>
+                                                        <script src="http://localhost/crud-api/pdf.js"></script>
                                                         <canvas id="the-canvas"></canvas>
                                                         <script>
                                                             var pdfData = atob('`+data._body+`');
-                                                            
+
                                                             // Disable workers to avoid yet another cross-origin issue (workers need
                                                             // the URL of the script to be loaded, and dynamically loading a cross-origin
                                                             // script does not work).
                                                             // PDFJS.disableWorker = true;
-                                                            
+
                                                             // The workerSrc property shall be specified.
-                                                            PDFJS.workerSrc = '//localhost/crud-api/pdf.worker.js';
-                                                            
+                                                            PDFJS.workerSrc = 'http://localhost/crud-api/pdf.worker.js';
+
                                                             // Using DocumentInitParameters object to load binary data.
                                                             var loadingTask = PDFJS.getDocument({data: pdfData});
                                                             loadingTask.promise.then(function(pdf) {
                                                             console.log('PDF loaded');
-                                                            
+
                                                             // Fetch the first page
                                                             var pageNumber = 1;
                                                             pdf.getPage(pageNumber).then(function(page) {
                                                             console.log('Page loaded');
-                                                            
+
                                                             var scale = 1.5;
                                                             var viewport = page.getViewport(scale);
-                                                            
+
                                                             // Prepare canvas using PDF page dimensions
                                                             var canvas = document.getElementById('the-canvas');
                                                             var context = canvas.getContext('2d');
                                                             canvas.height = viewport.height;
                                                             canvas.width = viewport.width;
-                                                            
+
                                                             // Render PDF page into canvas context
                                                             var renderContext = {
                                                             canvasContext: context,
@@ -86,7 +90,7 @@ export class NavigationDetailsPage {
                                                             var renderTask = page.render(renderContext);
                                                             renderTask.then(function () {
                                                             console.log('Page rendered');
-                                                            
+
                                                             window.print();
                                                             window.close();
                                                             });
@@ -100,6 +104,20 @@ export class NavigationDetailsPage {
                                                   </html>`
                   );
                   popupWin.document.close();
+                }
+              },(error :any)=>{
+                const alert = this.alertCtrl.create({
+                  title: 'Sesi Habis',
+                  subTitle: 'Silahkan Login Kembali',
+                  buttons: [{
+                      text:'Logout',
+                      handler: data=>{
+                          location.reload();
+                      }
+                    }]
+                });
+                alert.present();
+
               })
       }
   }
@@ -117,7 +135,7 @@ export class NavigationDetailsPage {
   <ion-list>
     <button ion-item *ngFor="let item of items let idx=index" (click)="_openNavDetailsPage(item)" (item)="items[idx]" icon-start>
       			<ion-avatar item-start>
-			<img src="http://localhost:8123/inlislite3/uploaded_files/sampul_koleksi/original/nophoto.jpg">
+			<img src="http://localhost/inlislite3/uploaded_files/sampul_koleksi/original/nophoto.jpg">
 			</ion-avatar>
 			<h2>{{ item.Title }}</h2>
     <h3>{{ item.Author }}</h3>
@@ -197,22 +215,22 @@ export class BasicPage {
 // ****** LIST API READ KOLEKSI DENGAN FILTER ******** //
 
 // Kategori umum
-//this.http.get('http://localhost:8123/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,sw,0').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
+//this.http.get('http://localhost/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,sw,0').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
 
 // Kategori Agama & filsafat
-//this.http.get('http://localhost:8123/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,bt,1,2').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
+//this.http.get('http://localhost/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,bt,1,2').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
 
 // Kategori ilmu sosial & bahasa
-//this.http.get('http://localhost:8123/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,bt,3,4').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
+//this.http.get('http://localhost/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,bt,3,4').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
 
 // Kategori ilmu pengetahuan murni & teknologi
-//this.http.get('http://localhost:8123/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,bt,5,6').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
+//this.http.get('http://localhost/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,bt,5,6').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
 
 // Kategori seni, olahraga & kesusastraan
-//this.http.get('http://localhost:8123/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,bt,7,8').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
+//this.http.get('http://localhost/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,bt,7,8').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
 
 // Kategori sejarah, geografi
-//this.http.get('http://localhost:8123/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,sw,9').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
+//this.http.get('http://localhost/crud-api/api.php/catalogs?order=id&transform=1&filter=CallNumber,sw,9').map(res => res.json()).subscribe(data => { this.items = data.catalogs;});
 
 
 }

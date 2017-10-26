@@ -22,7 +22,7 @@ export class AboutPage {
       this.catParam.setParam(param);
 	  this.navCtrl.push(NavigationBasicPage);
   }
-  
+
    scan(){
 	this.barcodeScanner.scan().then((barcodeData) => {
     let alert = this.alertCtrl.create({
@@ -35,7 +35,7 @@ export class AboutPage {
 		// return
 	});
   }
-  
+
   bookAlert() {
        //Jika Belum Login
     if(this.token.getToken() == "" || this.token.getToken() == null){
@@ -65,6 +65,9 @@ export class AboutPage {
                             .map(res=> res.json())
                             .subscribe(data=>{
                                 //JIKA TIDAK DI TEMUKAN
+                                console.log(data.Bardcode_Number);
+                                console.log(data.catalogs);
+
                                 if(data.catalogs.length == 0){
                                     let alert = this.alertCtrl.create({
                                         title: 'Not Found',
@@ -77,7 +80,7 @@ export class AboutPage {
                                 else{
                                     //DATA HASIL PENCARIAN BERADA DI
                                     //data.catalogs[0]
-                                    let modal = this.modalCtrl.create(NavigationDetailsPage, { item: data.catalogs[0] });
+                                    let modal = this.modalCtrl.create(NavigationDetailsPage, { item: data.catalogs[0],token:this.token.getToken() });
                                     modal.present();
                                 }
                             })
@@ -93,5 +96,5 @@ export class AboutPage {
 }
 
 
-  
+
 }
